@@ -1,0 +1,6 @@
+name: Venus
+version: '1.0-SNAPSHOT'
+main: lu.kolja.venus.Venus
+api-version: '1.21'
+authors: [ Kolja, Banker ]
+website: https://github.com/ko-lja/Venus
