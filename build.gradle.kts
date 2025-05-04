@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "lu.kolja"
-version = "1.0-SNAPSHOT"
+version = "1.0.0-alpha"
 
 repositories {
     mavenCentral()
@@ -36,6 +36,12 @@ tasks {
 val targetJavaVersion = 21
 kotlin {
     jvmToolchain(targetJavaVersion)
+
+    compilerOptions {
+        //experimental features
+        freeCompilerArgs.add("-Xwhen-guards")
+        freeCompilerArgs.add("-Xmulti-dollar-interpolation")
+    }
 }
 
 tasks.build {
