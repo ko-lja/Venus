@@ -3,7 +3,7 @@ package lu.kolja.venus
 import org.bstats.bukkit.Metrics
 import org.bukkit.plugin.java.JavaPlugin
 
-class Venus : JavaPlugin() {
+object Venus : JavaPlugin() {
 
     lateinit var metrics: Metrics
 
