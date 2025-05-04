@@ -9,7 +9,8 @@ Venus is a service provider API for Bukkit plugins, similar to Vault. It provide
 - Chat API for managing player chat prefixes, suffixes, and other chat-related functionality
 - Service provider registration mechanism for plugins to register their implementations
 
-## Including Venus in Your Project
+## Including Venus in Your Project (Coming Soon)
+## When Venus is available on JitPack, you’ll be able to include it in your project like this:
 
 ### Maven
 
