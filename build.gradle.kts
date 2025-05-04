@@ -41,6 +41,12 @@ tasks {
 val targetJavaVersion = 21
 kotlin {
     jvmToolchain(targetJavaVersion)
+
+    compilerOptions {
+        //experimental features
+        freeCompilerArgs.add("-Xwhen-guards")
+        freeCompilerArgs.add("-Xmulti-dollar-interpolation")
+    }
 }
 
 tasks.build {

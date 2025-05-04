@@ -56,14 +56,15 @@ object VenusAPI {
         plugin: Venus,
         priority: ServicePriority = ServicePriority.Normal
     ): Boolean {
-        if (economyProvider != null && economyProvider!!.isEnabled) {
-            return false
+        when (val currentProvider = economyProvider) {
+            is EconomyProvider if currentProvider.isEnabled -> return false
+            else -> {
+                economyProvider = provider
+                registerService(Economy::class.java, provider, plugin, priority)
+                registerService(EconomyProvider::class.java, provider, plugin, priority)
+                return true
+            }
         }
-
-        economyProvider = provider
-        registerService(Economy::class.java, provider, plugin, priority)
-        registerService(EconomyProvider::class.java, provider, plugin, priority)
-        return true
     }
 
     /**
@@ -79,14 +80,15 @@ object VenusAPI {
         plugin: Venus,
         priority: ServicePriority = ServicePriority.Normal
     ): Boolean {
-        if (permissionProvider != null && permissionProvider!!.isEnabled) {
-            return false
+        when (val currentProvider = permissionProvider) {
+            is PermissionProvider if currentProvider.isEnabled -> return false
+            else -> {
+                permissionProvider = provider
+                registerService(Permission::class.java, provider, plugin, priority)
+                registerService(PermissionProvider::class.java, provider, plugin, priority)
+                return true
+            }
         }
-
-        permissionProvider = provider
-        registerService(Permission::class.java, provider, plugin, priority)
-        registerService(PermissionProvider::class.java, provider, plugin, priority)
-        return true
     }
 
     /**
@@ -102,14 +104,15 @@ object VenusAPI {
         plugin: Venus,
         priority: ServicePriority = ServicePriority.Normal
     ): Boolean {
-        if (chatProvider != null && chatProvider!!.isEnabled) {
-            return false
+        when (val currentProvider = chatProvider) {
+            is ChatProvider if currentProvider.isEnabled -> return false
+            else -> {
+                chatProvider = provider
+                registerService(Chat::class.java, provider, plugin, priority)
+                registerService(ChatProvider::class.java, provider, plugin, priority)
+                return true
+            }
         }
-
-        chatProvider = provider
-        registerService(Chat::class.java, provider, plugin, priority)
-        registerService(ChatProvider::class.java, provider, plugin, priority)
-        return true
     }
 
     /**
