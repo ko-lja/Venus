@@ -9,12 +9,6 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
-    maven("https://repo.papermc.io/repository/maven-public/") {
-        name = "papermc-repo"
-    }
-    maven("https://oss.sonatype.org/content/groups/public/") {
-        name = "sonatype"
-    }
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots") {
         name = "spigot-repo"
     }
@@ -25,6 +19,7 @@ dependencies {
 
     compileOnly("org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    compileOnly("org.bstats:bstats-bukkit:3.0.2")
     implementation("io.github.revxrsal:lamp.common:$lamp_version")
     implementation("io.github.revxrsal:lamp.bukkit:$lamp_version")
 }
@@ -45,6 +40,10 @@ kotlin {
 
 tasks.build {
     dependsOn("shadowJar")
+}
+
+tasks.shadowJar {
+    relocate("com.bstats", "${project.group}.${project.name}")
 }
 
 tasks.processResources {

@@ -1,10 +1,15 @@
 package lu.kolja.venus
 
+import org.bstats.bukkit.Metrics
 import org.bukkit.plugin.java.JavaPlugin
 
-class Venus : JavaPlugin() {
+object Venus : JavaPlugin() {
 
-    override fun onEnable() {}
+    lateinit var metrics: Metrics
+
+    override fun onEnable() {
+        metrics = Metrics(this, 25735)
+    }
 
     override fun onDisable() {}
 }
